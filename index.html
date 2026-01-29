@@ -271,6 +271,12 @@
                     // Extract unique areas from shops array (e.g., ["北海道", "東北", "関東"...])
                     return [...new Set(this.shops.map(shop => shop.area))];
                 },
+                init() {
+                    // 画面描画完了後に「関東」へスクロールする
+                    this.$nextTick(() => {
+                        this.scrollToArea('関東');
+                    });
+                },
                 scrollToArea(area) {
                     const el = document.getElementById('area-' + area);
                     const container = document.querySelector('.shop-scroll');
